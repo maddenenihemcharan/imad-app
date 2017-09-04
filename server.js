@@ -5,22 +5,50 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne={
-    title: 'Article-One | Maddeneni Hemcharan',
-    heading: 'Article One',
-    date: '4 sep, 2017',
-    content:  
-                  `<p>
-                        this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one.
-                   </p> 
-                    <p>
-                        this is the content of article one. this is the content of article one. this is the content of article one. this is the content
-                        article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one.
-                    </p>
-                     <p>
-                        this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one.
-                    </p>`
-}
+var articles ={
+    'article-one': {
+        title: 'Article-One | Maddeneni Hemcharan',
+        heading: 'Article One',
+        date: '4 sep, 2017',
+        content:  
+                       `<p>
+                            this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one.
+                       </p> 
+                        <p>
+                            this is the content of article one. this is the content of article one. this is the content of article one. this is the content
+                            article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one.
+                        </p>
+                         <p>
+                            this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one. this is the content of article one.
+                        </p>`
+    },
+    'article-two': {
+         title: 'Article-Two | Maddeneni Hemcharan',
+        heading: 'Article Two',
+        date: '5 sep, 2017',
+        content:  
+                       `<p>
+                            this is the content of article two.
+                        <p>
+                            this is the content of article two.
+                         <p>
+                             this is the content of article two.
+                        </p>`
+    },
+    'article-three':{
+           title: 'Article-Three | Maddeneni Hemcharan',
+        heading: 'Article Three',
+        date: '10 sep, 2017',
+        content:  
+                       `<p>
+                            this is the content of article three.
+                        <p>
+                            this is the content of article three.
+                         <p>
+                             this is the content of article three.
+                        </p>`
+    }
+}    
 function createTemplate(data){
     var title=data.title;
     var heading=data.heading;
@@ -58,20 +86,12 @@ function createTemplate(data){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/article-one', function(req, res){
-    res.send(createTemplate(articleOne));
+// /: is a express feature which takes articleName or whatever string present after it it matches with other similar strings like article one etc
+// articles[articleName] == {}content object for articleone
+app.get('/:articleName', function(req, res){
+    var articleName = req.params.articleName;
+    res.send(createTemplate(articles[articleName]));
 });
-app.get('/article-two',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-app.get('/article-three',function(req,res){
-    res.sendFile(path.join(__dirname ,'ui', 'article-three.html'));
-});
-
-app.get('/ui/style.css', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'style.css'));
-});
-
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
