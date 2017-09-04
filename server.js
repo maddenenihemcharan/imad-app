@@ -36,17 +36,17 @@ var articles ={
                         </p>`
     },
     'article-three':{
-           title: 'Article-Three | Maddeneni Hemcharan',
+        title: 'Article-Three | Maddeneni Hemcharan',
         heading: 'Article Three',
         date: '10 sep, 2017',
         content:  
-                       `<p>
-                            this is the content of article three.
-                        <p>
-                            this is the content of article three.
-                         <p>
-                             this is the content of article three.
-                        </p>`
+               `<p>
+                    this is the content of article three.
+                <p>
+                    this is the content of article three.
+                 <p>
+                     this is the content of article three.
+                </p>`
     }
 }    
 function createTemplate(data){
@@ -60,7 +60,7 @@ function createTemplate(data){
             <title>
                ${title}
             </title>
-            <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="style.css" />
         </head>
             <body>
                 <div class="container">
@@ -85,8 +85,6 @@ function createTemplate(data){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-// /: is a express feature which takes articleName or whatever string present after it it matches with other similar strings like article one etc
-// articles[articleName] == {}content object for articleone
 app.get('/:articleName', function(req, res){
     var articleName = req.params.articleName;
     res.send(createTemplate(articles[articleName]));
