@@ -48,7 +48,7 @@ var articles ={
                      this is the content of article three.
                 </p>`
     }
-}    
+};    
 function createTemplate(data){
     var title=data.title;
     var heading=data.heading;
