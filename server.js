@@ -86,11 +86,11 @@ function createTemplate(data){
 app.get('/',function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+app.use('/ui', express.static('/'));
 app.get('/:articleName', function(req, res){
     var articleName = req.params.articleName;
     res.send(createTemplate(articles[articleName]));
 });
-app.use('/ui', express.static('/ui'));
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
 
