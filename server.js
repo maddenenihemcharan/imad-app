@@ -90,7 +90,7 @@ app.get('/:articleName', function(req, res){
     var articleName = req.params.articleName;
     res.send(createTemplate(articles[articleName]));
 });
-app.use('/',express.static('/ui'));
+app.use('/ui',express.static('/ui'));
 
 
 
