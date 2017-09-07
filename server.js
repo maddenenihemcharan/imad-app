@@ -90,7 +90,7 @@ app.get('/:articleName', function(req, res){
     var articleName = req.params.articleName;
     res.send(createTemplate(articles[articleName]));
 });
-app.use(express.static('ui'));
+app.use('/static',express.static('ui'));
 
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
