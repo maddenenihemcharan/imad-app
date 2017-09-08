@@ -87,10 +87,10 @@ app.get('/',function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('ui/',function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'style.css'));
+  res.sendFile(path.join(__dirname, 'ui', 'ui/style.css'));
 });
 app.get('ui/',function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'imad.png'));
+  res.sendFile(path.join(__dirname, 'ui', 'ui/imad.png'));
 });
 
 app.get('/:articleName', function(req, res){
