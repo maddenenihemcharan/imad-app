@@ -6,6 +6,5 @@ element.innerHTML="NEW VALUE";
 
 var img=document.getElementById("madi");
 img.onclick=function(){
-    img.style.marginLeft="100px";
-    
+    var interval = setInterval(moveLeft,100);
 };
