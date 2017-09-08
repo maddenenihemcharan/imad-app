@@ -86,11 +86,11 @@ function createTemplate(data){
 app.get('/',function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/ui',function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'ui/style.css'));
+app.get('/ui/style.css',function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
-app.get('/ui',function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'ui/imad.png'));
+app.get('/ui/imad.png',function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'imad.png'));
 });
 
 app.get('/:articleName', function(req, res){
